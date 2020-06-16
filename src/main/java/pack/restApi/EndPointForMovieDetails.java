@@ -16,6 +16,13 @@ import java.util.List;
 public class EndPointForMovieDetails {
     private final MovieDetailsService movieDetailsService;
 
+
+    @PostMapping("postMovieDetails")
+    public ResponseEntity saveMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto){
+        movieDetailsService.saveMovieDetails(movieDetailsDto);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @GetMapping("getMovieDetails")
     public ResponseEntity<List<MovieDetailsDto>> getAllMovieDetails(){
         return ResponseEntity.status(HttpStatus.OK).body(movieDetailsService.getAllMovieDetails());
@@ -26,24 +33,18 @@ public class EndPointForMovieDetails {
         return ResponseEntity.status(HttpStatus.OK).body(movieDetailsService.findById(id));
     }
 
-    @PostMapping
-    public ResponseEntity saveMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto){
-        movieDetailsService.saveMovieDetails(movieDetailsDto);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
-    @GetMapping("name/{name}")
+    @GetMapping("getMovieDetailsByName/{name}")
     public MovieDetailsDto findByName(@PathVariable String name){
         return movieDetailsService.findByName(name);
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("updateMovieDetailsById/{id}")
     public ResponseEntity updateMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto, @PathVariable Long id){
         movieDetailsService.updateMovieDetails(movieDetailsDto,id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("deleteMovieDetailsById/{id}")
     public ResponseEntity deleteMovieDetails(@PathVariable Long id){
         movieDetailsService.deleteMovieDetails(id);
         return new ResponseEntity(HttpStatus.OK);
