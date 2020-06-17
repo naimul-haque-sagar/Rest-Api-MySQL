@@ -1,11 +1,10 @@
-package pack.restApi;
+package pack.controller.restApi;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pack.dto.MovieDetailsDto;
-import pack.model.MovieDetails;
 import pack.service.MovieDetailsService;
 
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 public class EndPointForMovieDetails {
     private final MovieDetailsService movieDetailsService;
-
 
     @PostMapping("postMovieDetails")
     public ResponseEntity saveMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto){

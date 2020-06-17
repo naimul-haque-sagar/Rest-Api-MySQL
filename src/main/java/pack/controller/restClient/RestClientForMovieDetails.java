@@ -1,4 +1,4 @@
-package pack.restClient;
+package pack.controller.restClient;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import pack.dto.MovieDetailsDto;
 
-import java.net.URI;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
