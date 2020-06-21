@@ -1,4 +1,4 @@
-package pack.controller.restClient;
+package pack.controller.restConsumer;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -14,9 +14,9 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("restClient/consume")
+@RequestMapping("restapi/consumer")
 @AllArgsConstructor
-public class RestClientForMovieDetails {
+public class RestApiConsumer {
     private final RestTemplate restTemplate;
 
     @PostMapping("postMovieDetails1")
