@@ -19,12 +19,12 @@ import java.util.List;
 public class RestApiConsumer2 {
     private final WebClient.Builder webClientBuilder;
 
-    String GET_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/getMovieDetailsById";
-    String GET_MOVIE_DETAILS_BY_NAME="http://localhost:8080/api/movieDetails/getMovieDetailsByName";
-    String GET_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/getMovieDetails";
-    String DELETE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/deleteMovieDetailsById";
-    String UPDATE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/updateMovieDetailsById";
-    String POST_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/postMovieDetails";
+    static String GET_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/getMovieDetailsById";
+    static String GET_MOVIE_DETAILS_BY_NAME="http://localhost:8080/api/movieDetails/getMovieDetailsByName";
+    static String GET_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/getMovieDetails";
+    static String DELETE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/deleteMovieDetailsById";
+    static String UPDATE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/updateMovieDetailsById";
+    static String POST_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/postMovieDetails";
 
     @GetMapping("getMovieDetailsByid/{id}")
     public Mono<MovieDetailsDto> getMovieDetailsByid(@PathVariable Long id){

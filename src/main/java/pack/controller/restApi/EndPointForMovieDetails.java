@@ -17,6 +17,7 @@ public class EndPointForMovieDetails {
 
     @PostMapping("postMovieDetails")
     public ResponseEntity saveMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto){
+       //call another service
         movieDetailsService.saveMovieDetails(movieDetailsDto);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -38,6 +39,7 @@ public class EndPointForMovieDetails {
 
     @PutMapping("updateMovieDetailsById/{id}")
     public ResponseEntity updateMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto, @PathVariable Long id){
+      //call another service
         movieDetailsService.updateMovieDetails(movieDetailsDto,id);
         return new ResponseEntity(HttpStatus.OK);
     }

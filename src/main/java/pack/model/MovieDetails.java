@@ -1,21 +1,28 @@
 package pack.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 
+@Data
 @Entity
 @Table(name = "movie_details_table")
-@Data
+@NoArgsConstructor
 public class MovieDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Instant created;
     private Instant lastUpdated;
-    private String name;
+    private String movieName;
     private String ratings;
-    private String details;
-    private String director;
+
+    @OneToOne
+    private Artists artists;
+
+    @OneToMany
+    private List<ReleasePlace> releasePlaceList;
 }

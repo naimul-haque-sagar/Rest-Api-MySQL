@@ -1,11 +1,16 @@
 package pack.dto;
 
 import lombok.Data;
+import pack.model.Artists;
+import pack.model.ReleasePlace;
+
+import java.util.List;
 
 @Data
 public class MovieDetailsDto {
-    private String name;
+    private String movieName;
     private String ratings;
-    private String details;
-    private String director;
+
+    private Artists artists;
+    private List<ReleasePlace> releasePlaceList;
 }

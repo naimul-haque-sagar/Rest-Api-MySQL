@@ -33,15 +33,13 @@ public class MovieDetailsService {
     }
 
     public MovieDetailsDto findByName(String name) {
-        return movieDetailsMapper.toDto(movieDetailsRepo.findByName(name)
+        return movieDetailsMapper.toDto(movieDetailsRepo.findByMovieName(name)
         .orElseThrow(()->new AppException("Error occurred finding movie details by name")));
     }
 
     public void updateMovieDetails(MovieDetailsDto movieDetailsDto, Long id) {
         MovieDetails response=movieDetailsRepo.findById(id).orElseThrow(()->new AppException("Didn't find any movie details"));
-        response.setName(movieDetailsDto.getName());
-        response.setDetails(movieDetailsDto.getDetails());
-        response.setDirector(movieDetailsDto.getDirector());
+        response.setMovieName(movieDetailsDto.getMovieName());
         response.setRatings(movieDetailsDto.getRatings());
         response.setLastUpdated(java.time.Instant.now());
 

@@ -19,12 +19,12 @@ import java.util.List;
 public class RestApiConsumer {
     private final RestTemplate restTemplate;
 
-    String POST_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/postMovieDetails";
-    String GET_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/getMovieDetails";
-    String GET_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/getMovieDetailsById";
-    String GET_MOVIE_DETAILS_BY_NAME="http://localhost:8080/api/movieDetails/getMovieDetailsByName";
-    String UPDATE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/updateMovieDetailsById";
-    String DELETE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/deleteMovieDetailsById";
+    static String POST_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/postMovieDetails";
+    static String GET_MOVIE_DETAILS="http://localhost:8080/api/movieDetails/getMovieDetails";
+    static String GET_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/getMovieDetailsById";
+    static String GET_MOVIE_DETAILS_BY_NAME="http://localhost:8080/api/movieDetails/getMovieDetailsByName";
+    static String UPDATE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/updateMovieDetailsById";
+    static String DELETE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/deleteMovieDetailsById";
 
     @PostMapping("postMovieDetails1")
     public ResponseEntity postMovieDetails1(@RequestBody MovieDetailsDto movieDetailsDto){
