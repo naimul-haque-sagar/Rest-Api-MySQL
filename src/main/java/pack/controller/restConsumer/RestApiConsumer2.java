@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import pack.dto.MovieDetailsDto;
+import pack.dto.MovieDetails_Dto;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -42,26 +43,26 @@ public class RestApiConsumer2 {
     }
 
     @PostMapping("postMovieDetails2")
-    public Mono<MovieDetailsDto> postMovieDetails2(@RequestBody MovieDetailsDto movieDetailsDto){
+    public Mono<MovieDetailsDto> postMovieDetails2(@RequestBody MovieDetails_Dto movieDetails_Dto){
         return webClientBuilder.build()
-                .post().uri(POST_MOVIE_DETAILS).body(BodyInserters.fromValue(movieDetailsDto)).retrieve().bodyToMono(MovieDetailsDto.class);
+                .post().uri(POST_MOVIE_DETAILS).body(BodyInserters.fromValue(movieDetails_Dto)).retrieve().bodyToMono(MovieDetailsDto.class);
     }
 
     @PostMapping("postMovieDetails")
-    public Mono<MovieDetailsDto> postMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto){
+    public Mono<MovieDetailsDto> postMovieDetails(@RequestBody MovieDetails_Dto movieDetails_Dto){
         return webClientBuilder.build()
-                .post().uri(POST_MOVIE_DETAILS).syncBody(movieDetailsDto).retrieve().bodyToMono(MovieDetailsDto.class);
+                .post().uri(POST_MOVIE_DETAILS).syncBody(movieDetails_Dto).retrieve().bodyToMono(MovieDetailsDto.class);
     }
 
     @PostMapping("postMovieDetails1")
-    public Mono<String> postMovieDetails1(@RequestBody MovieDetailsDto movieDetailsDto){
+    public Mono<String> postMovieDetails1(@RequestBody MovieDetails_Dto movieDetails_Dto){
         return webClientBuilder.build()
-                .post().uri(POST_MOVIE_DETAILS).syncBody(movieDetailsDto).retrieve().bodyToMono(String.class);
+                .post().uri(POST_MOVIE_DETAILS).syncBody(movieDetails_Dto).retrieve().bodyToMono(String.class);
     }
 
     @PutMapping("updateMovieDetailsById/{id}")
-    public Mono<MovieDetailsDto> updateMovieDetailsById(@PathVariable Long id, @RequestBody MovieDetailsDto movieDetailsDto){
-        return webClientBuilder.build().put().uri(UPDATE_MOVIE_DETAILS_BY_ID+"/"+id).body(BodyInserters.fromValue(movieDetailsDto)).retrieve()
+    public Mono<MovieDetailsDto> updateMovieDetailsById(@PathVariable Long id, @RequestBody MovieDetails_Dto movieDetails_Dto){
+        return webClientBuilder.build().put().uri(UPDATE_MOVIE_DETAILS_BY_ID+"/"+id).body(BodyInserters.fromValue(movieDetails_Dto)).retrieve()
                 .bodyToMono(MovieDetailsDto.class);
     }
 

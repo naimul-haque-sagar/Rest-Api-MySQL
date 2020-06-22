@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import pack.dto.MovieDetailsDto;
+import pack.dto.MovieDetails_Dto;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,14 +28,14 @@ public class RestApiConsumer {
     static String DELETE_MOVIE_DETAILS_BY_ID="http://localhost:8080/api/movieDetails/deleteMovieDetailsById";
 
     @PostMapping("postMovieDetails1")
-    public ResponseEntity postMovieDetails1(@RequestBody MovieDetailsDto movieDetailsDto){
-        restTemplate.postForObject(POST_MOVIE_DETAILS,movieDetailsDto,MovieDetailsDto.class);
+    public ResponseEntity postMovieDetails1(@RequestBody MovieDetails_Dto movieDetails_Dto){
+        restTemplate.postForObject(POST_MOVIE_DETAILS,movieDetails_Dto,MovieDetailsDto.class);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("postMovieDetails2")
-    public ResponseEntity postMovieDetails2(@RequestBody MovieDetailsDto movieDetailsDto){
-        return restTemplate.postForEntity(POST_MOVIE_DETAILS,movieDetailsDto,MovieDetailsDto.class);
+    public ResponseEntity postMovieDetails2(@RequestBody MovieDetails_Dto movieDetails_Dto){
+        return restTemplate.postForEntity(POST_MOVIE_DETAILS,movieDetails_Dto,MovieDetailsDto.class);
     }
 
     @GetMapping("getMovieDetails1")
@@ -82,15 +83,15 @@ public class RestApiConsumer {
     }
 
     @PutMapping("updateMovieDetailsById/{id}")
-    public ResponseEntity updateMovieDetailsById(@PathVariable Long id, @RequestBody MovieDetailsDto movieDetailsDto){
-        restTemplate.put(UPDATE_MOVIE_DETAILS_BY_ID+"/{id}",movieDetailsDto,id);
+    public ResponseEntity updateMovieDetailsById(@PathVariable Long id, @RequestBody MovieDetails_Dto movieDetails_Dto){
+        restTemplate.put(UPDATE_MOVIE_DETAILS_BY_ID+"/{id}",movieDetails_Dto,id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("updateMovieDetailsByid/{id}")
-    public ResponseEntity updateMovieDetailsByid(@PathVariable Long id, @RequestBody MovieDetailsDto movieDetailsDto){
+    public ResponseEntity updateMovieDetailsByid(@PathVariable Long id, @RequestBody MovieDetails_Dto movieDetails_Dto){
         return restTemplate
-                .exchange(UPDATE_MOVIE_DETAILS_BY_ID+"/{id}", HttpMethod.PUT,new HttpEntity<>(movieDetailsDto),
+                .exchange(UPDATE_MOVIE_DETAILS_BY_ID+"/{id}", HttpMethod.PUT,new HttpEntity<>(movieDetails_Dto),
                         MovieDetailsDto.class,id);
     }
 

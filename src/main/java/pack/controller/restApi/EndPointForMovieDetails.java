@@ -5,6 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pack.dto.MovieDetailsDto;
+import pack.dto.MovieDetails_Dto;
+import pack.exception.AppException;
+import pack.model.Artists;
+import pack.model.ReleasePlace;
+import pack.repo.ArtistsRepo;
+import pack.repo.ReleasePlaceRepo;
 import pack.service.MovieDetailsService;
 
 import java.util.List;
@@ -15,9 +21,22 @@ import java.util.List;
 public class EndPointForMovieDetails {
     private final MovieDetailsService movieDetailsService;
 
+    private final ArtistsRepo artistsRepo;
+
+    private final ReleasePlaceRepo releasePlaceRepo;
+
     @PostMapping("postMovieDetails")
-    public ResponseEntity saveMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto){
-       //call another service
+    public ResponseEntity saveMovieDetails(@RequestBody MovieDetails_Dto movieDetails_dto){
+        Artists artists=artistsRepo.findByMovieName(movieDetails_dto.getMovieName())
+                .orElseThrow(()->new AppException("No artists found"));
+        List<ReleasePlace> releasePlaceList=releasePlaceRepo.findAll();
+
+        MovieDetailsDto movieDetailsDto=new MovieDetailsDto();
+        movieDetailsDto.setMovieName(movieDetails_dto.getMovieName());
+        movieDetailsDto.setRatings(movieDetails_dto.getRatings());
+        movieDetailsDto.setArtists(artists);
+        movieDetailsDto.setReleasePlaceList(releasePlaceList);
+
         movieDetailsService.saveMovieDetails(movieDetailsDto);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -38,9 +57,8 @@ public class EndPointForMovieDetails {
     }
 
     @PutMapping("updateMovieDetailsById/{id}")
-    public ResponseEntity updateMovieDetails(@RequestBody MovieDetailsDto movieDetailsDto, @PathVariable Long id){
-      //call another service
-        movieDetailsService.updateMovieDetails(movieDetailsDto,id);
+    public ResponseEntity updateMovieDetails(@RequestBody MovieDetails_Dto movieDetails_Dto, @PathVariable Long id){
+        movieDetailsService.updateMovieDetails(movieDetails_Dto,id);
         return new ResponseEntity(HttpStatus.OK);
     }
 

@@ -20,9 +20,9 @@ public class MovieDetails {
     private String movieName;
     private String ratings;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Artists artists;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ReleasePlace> releasePlaceList;
 }
