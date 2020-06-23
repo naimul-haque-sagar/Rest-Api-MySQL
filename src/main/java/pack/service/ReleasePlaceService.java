@@ -8,6 +8,8 @@ import pack.mapper.ReleasePlaceMapper;
 import pack.repo.ReleasePlaceRepo;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -21,8 +23,7 @@ public class ReleasePlaceService {
         releasePlaceRepo.save(releasePlaceMapper.toModel(releasePlaceDto));
     }
 
-    public ReleasePlaceDto getReleasePlaceByName(String name) {
-        return releasePlaceMapper
-                .toDto(releasePlaceRepo.findByMovieName(name).orElseThrow(()->new AppException("ReleasePlace not fond")));
+    public List<ReleasePlaceDto> getReleasePlaceByName(String name) {
+        return releasePlaceRepo.findByMovieName(name).stream().map(releasePlaceMapper::toDto).collect(Collectors.toList());
     }
 }

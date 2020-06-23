@@ -8,6 +8,8 @@ import pack.dto.ArtistsDto;
 import pack.dto.ReleasePlaceDto;
 import pack.service.ReleasePlaceService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/releasePlace")
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class EndPointForReleasePlace {
     }
 
     @GetMapping("getReleasePlaceByName/{name}")
-    public ResponseEntity<ReleasePlaceDto> getReleasePlaceByName(@PathVariable String name){
+    public ResponseEntity<List<ReleasePlaceDto>> getReleasePlaceByName(@PathVariable String name){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(releasePlaceService.getReleasePlaceByName(name));
     }

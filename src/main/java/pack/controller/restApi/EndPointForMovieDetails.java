@@ -29,7 +29,7 @@ public class EndPointForMovieDetails {
     public ResponseEntity saveMovieDetails(@RequestBody MovieDetails_Dto movieDetails_dto){
         Artists artists=artistsRepo.findByMovieName(movieDetails_dto.getMovieName())
                 .orElseThrow(()->new AppException("No artists found"));
-        List<ReleasePlace> releasePlaceList=releasePlaceRepo.findAll();
+        List<ReleasePlace> releasePlaceList=releasePlaceRepo.findByMovieName(movieDetails_dto.getMovieName());
 
         MovieDetailsDto movieDetailsDto=new MovieDetailsDto();
         movieDetailsDto.setMovieName(movieDetails_dto.getMovieName());
