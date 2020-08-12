@@ -1,5 +1,17 @@
-Restful web services 
+Spring Rest Data Jpa
 
--spring boot
--spring rest data jpa
--swagger
+It's a Restful web services built using
+
+-->spring boot
+-->spring boot data jpa
+-->spring boot webflux
+-->mysql
+-->lombok
+-->mapstruct
+-->swagger
+
+There's two service endpoint 
+one for submitting data  
+and another for consuming data
+
+Data consuming service is implemented both with RestTemplate and WebClient
