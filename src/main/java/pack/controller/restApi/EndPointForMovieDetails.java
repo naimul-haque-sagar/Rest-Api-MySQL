@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/movieDetails")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class EndPointForMovieDetails {
     private final MovieDetailsService movieDetailsService;
 
@@ -58,6 +59,7 @@ public class EndPointForMovieDetails {
 
     @PutMapping("updateMovieDetailsById/{id}")
     public ResponseEntity updateMovieDetails(@RequestBody MovieDetails_Dto movieDetails_Dto, @PathVariable Long id){
+        System.out.println(movieDetails_Dto);
         movieDetailsService.updateMovieDetails(movieDetails_Dto,id);
         return new ResponseEntity(HttpStatus.OK);
     }

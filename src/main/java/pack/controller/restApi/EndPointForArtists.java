@@ -11,6 +11,7 @@ import pack.service.ArtistsService;
 @RestController
 @RequestMapping("api/artists")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class EndPointForArtists {
     private final ArtistsService artistsService;
 
