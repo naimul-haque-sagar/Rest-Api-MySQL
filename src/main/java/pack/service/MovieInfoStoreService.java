@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pack.model.MovieInfoStore;
 import pack.repo.MovieInfoStoreRepo;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class MovieInfoStoreService {
@@ -24,5 +26,25 @@ public class MovieInfoStoreService {
 
     public MovieInfoStore findDistinctByNameOrDirector(String name, String director) {
         return movieInfoStoreRepo.findDistinctMovieInfoStoreByNameOrDirector(name,director);
+    }
+
+    public MovieInfoStore findByIgnoreCase(String name) {
+        return movieInfoStoreRepo.findByNameIgnoreCase(name);
+    }
+
+    public MovieInfoStore findByAllIgnoreCase(String name, String director) {
+        return movieInfoStoreRepo.findByNameAndDirectorAllIgnoreCase(name,director);
+    }
+
+    public List<MovieInfoStore> findByDirectorOrderByName(String director) {
+        return movieInfoStoreRepo.findByDirectorOrderByName(director);
+    }
+
+    public List<MovieInfoStore> findByDirectorOrderByNameDesc(String director) {
+        return movieInfoStoreRepo.findByDirectorOrderByNameDesc(director);
+    }
+
+    public MovieInfoStore findTop(String name) {
+        return movieInfoStoreRepo.findTopByName(name);
     }
 }
