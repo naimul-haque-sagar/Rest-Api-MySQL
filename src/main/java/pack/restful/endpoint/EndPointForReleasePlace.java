@@ -1,10 +1,9 @@
-package pack.controller.restApi;
+package pack.restful.endpoint;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pack.dto.ArtistsDto;
 import pack.dto.ReleasePlaceDto;
 import pack.service.ReleasePlaceService;
 

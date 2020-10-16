@@ -1,4 +1,4 @@
-package pack.controller.restConsumer;
+package pack.restful.consume;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

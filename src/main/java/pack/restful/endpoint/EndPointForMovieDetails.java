@@ -1,4 +1,4 @@
-package pack.controller.restApi;
+package pack.restful.endpoint;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
